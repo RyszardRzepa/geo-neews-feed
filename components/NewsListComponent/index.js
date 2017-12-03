@@ -1,34 +1,40 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text} from 'react-native';
 import gql from "graphql-tag";
 import {graphql} from 'react-apollo';
+import PropTypes from 'prop-types'
 
 class NewsListComponent extends Component {
-    render () {
+    render() {
         return (
             <View>
-                {console.log(this.props)}
+                {this.props.data.loading && <Text>loading...</Text>}
+                {console.log(this.props.data)}
             </View>
         )
     }
 }
+
+NewsListComponent.propTypes = {
+    tag: PropTypes.string
+};
 
 const newsQuery = gql`
 {
   labrador {
     articles(tags: "sentrum") {
       id
-      published
+      title
     }
   }
 }
 `;
 
 export default graphql(newsQuery, {
-    options(ownProps) {
+    options({tag}) {
         return {
             variables: {
-                tag: ownProps.tag,
+                tag,
             },
         };
     },

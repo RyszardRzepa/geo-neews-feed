@@ -26,10 +26,10 @@ class App extends Component {
         }
 
         let location = await Location.getCurrentPositionAsync({});
-        this._callGoogleMapsApi(location)
+        return this._callGoogleMapsApi(location)
     };
 
-    _callGoogleMapsApi({coords: {latitude, longitude}}) {
+    async _callGoogleMapsApi({coords: {latitude, longitude}}) {
         this.setState({isLoading: true});
 
         const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=
@@ -38,10 +38,11 @@ class App extends Component {
         &key=AIzaSyAO_JxJ2FUOB8hD414P1vA8_ziYCV6Xzgo`;
 
         // get district(tag) name from google maps response
-        axios.get(url).then(res => this.setState({
+        let res = await axios.get(url);
+        this.setState({
             tag: res.data.results[0].address_components[2].long_name,
             isLoading: false
-        }))
+        })
     }
 
     render() {

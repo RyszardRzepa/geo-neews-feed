@@ -7,7 +7,7 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
 import HomeScreen from './screens/HomeScreen';
 
 const client = new ApolloClient({
-    link: new HttpLink({uri: 'http://wolverine-fetcher.prod.medialaben.no'}),
+    link: new HttpLink({uri: 'http://wolverine-fetcher.prod.medialaben.no/'}),
     cache: new InMemoryCache(),
 });
 
