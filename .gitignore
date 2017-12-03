@@ -1,3 +1,5 @@
 node_modules/**/*
 .expo/*
 npm-debug.*
+.idea/vcs.xml
+package-lock.json
