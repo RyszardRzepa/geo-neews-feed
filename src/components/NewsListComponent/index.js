@@ -10,7 +10,7 @@ import styles from './styles';
 class NewsListComponent extends PureComponent {
   _keyExtractor = (item) => item.id;
 
-  _renderItem({ item }) {
+  _renderItem = ({ item }) => {
     const { title, subtitle, image_url } = item;
     const imgRootUrl = 'https://dbstatic.no/68935430.jpg';
     let imgUrl = `${imgRootUrl}${image_url}`;
@@ -19,9 +19,10 @@ class NewsListComponent extends PureComponent {
         title={title}
         subtitle={subtitle}
         imgUrl={imgUrl}
+        navigation={this.props.navigation}
       />
     )
-  }
+  };
 
   render() {
     return (

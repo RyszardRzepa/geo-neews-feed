@@ -1,18 +1,19 @@
 import React, { PureComponent } from 'react';
-import { List, ListItem } from 'react-native-elements'
+import { ListItem } from 'react-native-elements'
 
 class ListItemComponent extends PureComponent {
-  _onPress = () => {
-    // this.props.onPressItem(this.props.id);
+  _onPress = (navigation, title, subtitle) => {
+    navigation.navigate('ArticleDetails', {  title, subtitle } )
   };
 
   render() {
-    const { title, subtitle, imgUrl } = this.props;
+    const { title, subtitle, imgUrl, navigation } = this.props;
     return (
       <ListItem
         title={title}
         subtitle={subtitle}
         avatar={{ uri: imgUrl }}
+        onPress={() => this._onPress(navigation, title, subtitle )}
       />
     );
   }

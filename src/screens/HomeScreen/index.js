@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, Alert, Linking } from 'react-native';
 import { Location, Permissions } from 'expo';
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ import styles from './styles';
 class App extends Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
-    return { headerTitle: <HeaderTitle title={params.tag}/> }
+    return { headerTitle: <HeaderTitle title={`User Location: ${params.tag || ''}`}/> }
   };
 
   state = {
@@ -31,7 +31,7 @@ class App extends Component {
   _getLocationAsync = async () => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== 'granted') {
-      this.setState({
+      return this.setState({
         errorMessage: 'Permission to access location was denied',
       });
     }
@@ -57,12 +57,27 @@ class App extends Component {
     });
   }
 
+  _showError () {
+    if(this.state.errorMessage) {
+      return Alert.alert(
+        'User location not enabled',
+        'You need to enable location permission to read articles from your position',
+        [
+          {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+          {text: 'Enable Location', onPress: () => Linking.openURL('app-settings://location')},
+        ],
+        { cancelable: false }
+      )
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
+        {this._showError()}
         {!this.state.tag ?
           <ActivityIndicator/> :
-          <NewsListComponent tag={this.state.tag.toLowerCase()}/>
+          <NewsListComponent navigation={this.props.navigation} tag={this.state.tag.toLowerCase()}/>
         }
       </View>
     );
