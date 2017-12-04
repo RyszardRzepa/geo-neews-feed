@@ -7,13 +7,15 @@ class ListItemComponent extends PureComponent {
   };
 
   render() {
+    const { title, subtitle, imgUrl } = this.props;
     return (
       <ListItem
-        title={this.props.title}
-        subtitle={this.props.subtitle}
+        title={title}
+        subtitle={subtitle}
+        avatar={{ uri: imgUrl }}
       />
     );
   }
 }
 
-export default ListItem;
+export default ListItemComponent;

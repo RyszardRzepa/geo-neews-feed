@@ -12,11 +12,13 @@ class NewsListComponent extends PureComponent {
 
   _renderItem({ item }) {
     const { title, subtitle, image_url } = item;
+    const imgRootUrl = 'https://dbstatic.no/68935430.jpg';
+    let imgUrl = `${imgRootUrl}${image_url}`;
     return (
       <ListItem
         title={title}
         subtitle={subtitle}
-        image_url={image_url}
+        imgUrl={imgUrl}
       />
     )
   }
@@ -43,16 +45,16 @@ NewsListComponent.propTypes = {
 };
 
 const newsQuery = gql`
-query fetchNews($tag: String!) {
+  query fetchNews($tag: String!) {
     labrador {
-       articles(tags: $tag) {
-          id
-          title
-          subtitle
-          image_url
-    }
+    articles(tags: $tag) {
+    id
+    title
+    subtitle
+    image_url
   }
-}
-`;
+  }
+  }
+  `;
 
 export default graphql(newsQuery)(NewsListComponent);
