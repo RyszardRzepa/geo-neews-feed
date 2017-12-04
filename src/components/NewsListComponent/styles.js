@@ -4,6 +4,7 @@ const { width } = Dimensions.get('window');
 const styles = {
   container : {
     width,
+    justifyContent: 'center',
     flex: 1
   }
 };

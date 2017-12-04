@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3db75f5d-e39e-43c6-9384-72c4450ca4e2" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewsListComponent/index.js" afterPath="$PROJECT_DIR$/src/components/NewsListComponent/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewsListComponent/styles.js" afterPath="$PROJECT_DIR$/src/components/NewsListComponent/styles.js" />
       <change beforePath="$PROJECT_DIR$/src/screens/HomeScreen/index.js" afterPath="$PROJECT_DIR$/src/screens/HomeScreen/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,14 +20,21 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/screens/HomeScreen/index.js">
+        <entry file="file://$PROJECT_DIR$/src/components/NewsListComponent/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-                <element signature="n#!!block;n#_callGoogleMapsApi#0;n#App#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="289">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/NewsListComponent/styles.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,11 +75,11 @@
         <option value="$PROJECT_DIR$/src/navigation/RootNavigation.js" />
         <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/src/navigation/RootNavigator.js" />
-        <option value="$PROJECT_DIR$/src/components/NewsListComponent/styles.js" />
-        <option value="$PROJECT_DIR$/src/components/NewsListComponent/index.js" />
         <option value="$PROJECT_DIR$/src/components/Common/HeaderTitleComponent/index.js" />
         <option value="$PROJECT_DIR$/src/components/Common/HeaderTitleComponent/styles.js" />
         <option value="$PROJECT_DIR$/src/screens/HomeScreen/index.js" />
+        <option value="$PROJECT_DIR$/src/components/NewsListComponent/index.js" />
+        <option value="$PROJECT_DIR$/src/components/NewsListComponent/styles.js" />
       </list>
     </option>
   </component>
@@ -232,7 +242,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25576000" />
+    <option name="totallyTimeSpent" value="25881000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -551,14 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/NewsListComponent/styles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -597,14 +599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/NewsListComponent/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Common/HeaderTitleComponent/styles.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -625,12 +619,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/screens/HomeScreen/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="326">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="n#!!block;n#_callGoogleMapsApi#0;n#App#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/NewsListComponent/styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/NewsListComponent/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

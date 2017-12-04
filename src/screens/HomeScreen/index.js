@@ -18,14 +18,14 @@ class App extends Component {
     tag: '',
   };
 
+  componentWillMount() {
+    return this._getLocationAsync()
+  }
+
   componentDidUpdate(nextProps, nextState) {
     if (nextState.tag !== this.state.tag) {
       this.props.navigation.setParams({ tag: this.state.tag });
     }
-  }
-
-  componentWillMount() {
-    return this._getLocationAsync()
   }
 
   _getLocationAsync = async () => {
@@ -58,13 +58,12 @@ class App extends Component {
   }
 
   render() {
-    if (!this.state.tag) {
-      return <ActivityIndicator/>
-    }
-
     return (
       <View style={styles.container}>
-        <NewsListComponent tag={this.state.tag.toLowerCase()}/>
+        {!this.state.tag ?
+          <ActivityIndicator/> :
+          <NewsListComponent tag={this.state.tag.toLowerCase()}/>
+        }
       </View>
     );
   }

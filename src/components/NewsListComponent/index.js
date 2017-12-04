@@ -24,16 +24,16 @@ class NewsListComponent extends PureComponent {
   }
 
   render() {
-    if (this.props.data.loading) {
-      return <ActivityIndicator/>
-    }
     return (
       <View style={styles.container}>
-        <FlatList
-          data={this.props.data.labrador.articles}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
-        />
+        {this.props.data.loading ?
+          <ActivityIndicator/> :
+          <FlatList
+            data={this.props.data.labrador.articles}
+            keyExtractor={this._keyExtractor}
+            renderItem={this._renderItem}
+          />
+        }
       </View>
     )
   }
