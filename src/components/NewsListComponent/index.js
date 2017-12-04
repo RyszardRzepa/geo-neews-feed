@@ -4,13 +4,13 @@ import gql from "graphql-tag";
 import { graphql } from 'react-apollo';
 import PropTypes from 'prop-types'
 
-import ListItem from '../ListItemComponent';
+import ListItem from '../Common/ListItemComponent/index';
 import styles from './styles';
 
 class NewsListComponent extends PureComponent {
   _keyExtractor = (item) => item.id;
 
-  _renderItem({ item }) {
+  _renderItem = ({ item }) => {
     const { title, subtitle, image_url } = item;
     const imgRootUrl = 'https://dbstatic.no/68935430.jpg';
     let imgUrl = `${imgRootUrl}${image_url}`;
@@ -19,21 +19,22 @@ class NewsListComponent extends PureComponent {
         title={title}
         subtitle={subtitle}
         imgUrl={imgUrl}
+        navigation={this.props.navigation}
       />
     )
-  }
+  };
 
   render() {
-    if (this.props.data.loading) {
-      return <ActivityIndicator/>
-    }
     return (
       <View style={styles.container}>
-        <FlatList
-          data={this.props.data.labrador.articles}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
-        />
+        {this.props.data.loading ?
+          <ActivityIndicator/> :
+          <FlatList
+            data={this.props.data.labrador.articles}
+            keyExtractor={this._keyExtractor}
+            renderItem={this._renderItem}
+          />
+        }
       </View>
     )
   }
@@ -44,17 +45,17 @@ NewsListComponent.propTypes = {
   data: PropTypes.object
 };
 
-const newsQuery = gql`
+const articlesQuery = gql`
   query fetchNews($tag: String!) {
     labrador {
-    articles(tags: $tag) {
-    id
-    title
-    subtitle
-    image_url
+      articles(tags: $tag) {
+        id
+        title
+        subtitle
+        image_url
+       }
+    }
   }
-  }
-  }
-  `;
+`;
 
-export default graphql(newsQuery)(NewsListComponent);
+export default graphql(articlesQuery)(NewsListComponent);

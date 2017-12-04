@@ -4,7 +4,7 @@ import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import HomeScreen from './screens/HomeScreen';
+import RootNavigator from './src/navigation/RootNavigator';
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: 'http://wolverine-fetcher.prod.medialaben.no/query' }),
@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <HomeScreen/>
+        <RootNavigator/>
       </ApolloProvider>
     );
   }
