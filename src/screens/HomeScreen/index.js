@@ -3,10 +3,14 @@ import { View, ActivityIndicator } from 'react-native';
 import { Location, Permissions } from 'expo';
 import axios from 'axios';
 
-import NewsListComponent from '../../components/NewsListComponent';
+import NewsListComponent from '../../components/NewsListComponent/index';
 import styles from './styles';
 
 class App extends Component {
+  static navigationOptions = {
+    title: 'Home'
+  };
+
   state = {
     errorMessage: '',
     tag: '',

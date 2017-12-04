@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import { graphql } from 'react-apollo';
 import PropTypes from 'prop-types'
 
-import ListItem from '../ListItemComponent';
+import ListItem from '../Common/ListItemComponent/index';
 import styles from './styles';
 
 class NewsListComponent extends PureComponent {

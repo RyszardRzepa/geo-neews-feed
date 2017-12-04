@@ -3,7 +3,6 @@ const { width } = Dimensions.get('window');
 
 const styles = {
   container : {
-    paddingTop: 30,
     width,
     flex: 1
   }
