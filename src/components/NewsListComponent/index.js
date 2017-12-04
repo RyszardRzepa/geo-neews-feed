@@ -44,17 +44,17 @@ NewsListComponent.propTypes = {
   data: PropTypes.object
 };
 
-const newsQuery = gql`
+const articlesQuery = gql`
   query fetchNews($tag: String!) {
     labrador {
-    articles(tags: $tag) {
-    id
-    title
-    subtitle
-    image_url
+      articles(tags: $tag) {
+        id
+        title
+        subtitle
+        image_url
+       }
+    }
   }
-  }
-  }
-  `;
+`;
 
-export default graphql(newsQuery)(NewsListComponent);
+export default graphql(articlesQuery)(NewsListComponent);

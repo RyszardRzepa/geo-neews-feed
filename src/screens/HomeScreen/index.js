@@ -4,18 +4,25 @@ import { Location, Permissions } from 'expo';
 import axios from 'axios';
 
 import NewsListComponent from '../../components/NewsListComponent/index';
+import HeaderTitle from '../../components/Common/HeaderTitleComponent';
 import styles from './styles';
 
 class App extends Component {
-  static navigationOptions = {
-    title: 'Home'
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    return { headerTitle: <HeaderTitle title={params.tag}/> }
   };
 
   state = {
     errorMessage: '',
     tag: '',
-    isLoading: true
   };
+
+  componentDidUpdate(nextProps, nextState) {
+    if (nextState.tag !== this.state.tag) {
+      this.props.navigation.setParams({ tag: this.state.tag });
+    }
+  }
 
   componentWillMount() {
     return this._getLocationAsync()
