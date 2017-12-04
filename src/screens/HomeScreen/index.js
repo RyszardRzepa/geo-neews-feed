@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ActivityIndicator, Alert, Linking } from 'react-native';
+import { View, ActivityIndicator, Text, Alert, Linking } from 'react-native';
 import { Location, Permissions } from 'expo';
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ import styles from './styles';
 class App extends Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
-    return { headerTitle: <HeaderTitle title={`User Location: ${params.tag || ''}`}/> }
+    return { headerTitle: <HeaderTitle title={`User Location: ${params.tag || 'Loading...'}`}/> }
   };
 
   state = {
@@ -57,28 +57,35 @@ class App extends Component {
     });
   }
 
-  _showError () {
-    if(this.state.errorMessage) {
-      return Alert.alert(
+  _renderLocationErrorOrArticles() {
+    if (this.state.errorMessage) {
+      Alert.alert(
         'User location not enabled',
         'You need to enable location permission to read articles from your position',
         [
-          {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-          {text: 'Enable Location', onPress: () => Linking.openURL('app-settings://location')},
+          { text: 'Cancel', onPress: () => console.log, style: 'cancel' },
+          { text: 'Enable Location', onPress: () => Linking.openURL('app-settings://location') },
         ],
         { cancelable: false }
+      );
+      return (
+        <Text>
+          {this.state.errorMessage}. Restart the app, after enabling location permission.
+        </Text>
       )
+    }
+    else if (!this.state.tag) {
+      return <ActivityIndicator/>
+    }
+    else {
+      return <NewsListComponent navigation={this.props.navigation} tag={this.state.tag.toLowerCase()}/>
     }
   }
 
   render() {
     return (
       <View style={styles.container}>
-        {this._showError()}
-        {!this.state.tag ?
-          <ActivityIndicator/> :
-          <NewsListComponent navigation={this.props.navigation} tag={this.state.tag.toLowerCase()}/>
-        }
+        {this._renderLocationErrorOrArticles()}
       </View>
     );
   }
