@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {View, ActivityIndicator} from 'react-native';
 import {Location, Permissions} from 'expo';
 import axios from 'axios';
 
+import NewsListComponent from '../../components/NewsListComponent';
 import styles from './styles';
 
-export default class App extends Component {
+class App extends Component {
     state = {
-        errorMessage: ''
+        errorMessage: '',
+        tag: '',
+        isLoading: false
     };
 
     componentWillMount() {
@@ -23,23 +26,36 @@ export default class App extends Component {
         }
 
         let location = await Location.getCurrentPositionAsync({});
-        this.callGoogleMapsApi(location)
+        return this._callGoogleMapsApi(location)
     };
 
-    callGoogleMapsApi({coords: {latitude, longitude}}) {
+    async _callGoogleMapsApi({coords: {latitude, longitude}}) {
+        this.setState({isLoading: true});
+
         const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=
         ${latitude},
         ${longitude}
         &key=AIzaSyAO_JxJ2FUOB8hD414P1vA8_ziYCV6Xzgo`;
 
-        axios.get(url).then(res => console.log(res.data.results[0].address_components[2].long_name))
+        // get district(tag) name from google maps response
+        let res = await axios.get(url);
+        this.setState({
+            tag: res.data.results[0].address_components[2].long_name,
+            isLoading: false
+        })
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.paragraph}>location</Text>
+                {this.state.isLoading ?
+                    <ActivityIndicator/> :
+                    <NewsListComponent tag={this.state.tag}/>
+                }
             </View>
         );
     }
 }
+
+
+export default App;
