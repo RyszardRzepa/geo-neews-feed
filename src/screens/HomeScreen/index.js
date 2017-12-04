@@ -36,8 +36,12 @@ class App extends Component {
       });
     }
 
-    let location = await Location.getCurrentPositionAsync({});
-    return this._callGoogleMapsApi(location)
+    return Location.watchPositionAsync({
+      enableHighAccuracy: false,
+      distanceInterval: 500,
+    }, (location) => {
+      return this._callGoogleMapsApi(location)
+    })
   };
 
   async _callGoogleMapsApi({ coords: { latitude, longitude } }) {
